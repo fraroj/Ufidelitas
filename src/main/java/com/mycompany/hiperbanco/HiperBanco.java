@@ -11,6 +11,10 @@ package com.mycompany.hiperbanco;
 public class HiperBanco {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+
+        Cliente miCliente = new Cliente ("","",0,"");
+
+        miCliente.agregarclienteID();
+        
     }
-}
+    }
