@@ -52,6 +52,24 @@ public class Cliente {
             }
         }
     }
+    
+    
+    
+    
+     //Metodo para el telefono
+
+//        public void agregartelefonoCliente(){
+//            while (true){
+//            telefonoCliente = JOptionPane.showInputDialog("Ingrese su número de teléfono");
+//            
+//            if (telefonoCliente.length() == 8 && numeroExp.charAt(5) == '-') {
+//                
+//                
+//            }
+//            }
+//    
+    
+   
 
     // Get para el clienteID
     public String getclienteID() {
@@ -83,5 +101,6 @@ public class Cliente {
     }
     }
 }
+
 
 

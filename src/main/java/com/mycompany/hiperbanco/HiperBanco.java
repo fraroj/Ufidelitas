@@ -17,6 +17,6 @@ public class HiperBanco {
         miCliente.agregarClienteID();
         miCliente.agregarnombreCliente();
         
-        System.out.println("el nombres es" + miCliente.getNombreCliente());
+      
     }
     }
