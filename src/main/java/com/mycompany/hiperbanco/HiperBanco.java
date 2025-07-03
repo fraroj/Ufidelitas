@@ -17,6 +17,7 @@ public class HiperBanco {
         miCliente.agregarClienteID();
         miCliente.agregarnombreCliente();
         miCliente.agregartelefonoCliente();
+        miCliente.agregarcorreoCliente();
       
     }
     }
