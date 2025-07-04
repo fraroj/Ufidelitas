@@ -13,6 +13,7 @@ public class Cliente {
     private String usuario;
     private String clave;
     private Estado estado;
+    
 
     // Constructor
     public Cliente(String clienteID, String nombreCliente, String telefonoCliente, String correoCliente, Estado estado) {
@@ -57,59 +58,57 @@ public class Cliente {
     }
 
     //Metodo para el telefono
-    public void agregartelefonoCliente() {
-        for (int i = 0; i < 3; i++) {
-            telefonoCliente = JOptionPane.showInputDialog("Ingrese su número de teléfono en el siguiente formato 0000-0000");
+        public void agregartelefonoCliente() {
+            for (int i = 0; i < 3; i++) {
+                telefonoCliente = JOptionPane.showInputDialog("Ingrese su número de teléfono en el siguiente formato 0000-0000");
 
-            if (telefonoCliente == null) {
-                break;
-            } else if (telefonoCliente.trim().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "El numero de telefono no puede estar vacío. Intento: " + (i + 1));
+                if (telefonoCliente == null) {
+                    break;
+                } else if (telefonoCliente.trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "El numero de telefono no puede estar vacío. Intento: " + (i + 1));
 
-            } else if (telefonoCliente.length() != 9 || telefonoCliente.charAt(4) != '-') {
-                JOptionPane.showMessageDialog(null,
-                        "El número de teléfono no cumple con los requisitos mínimos.\n"
-                                + "- Mínimo 8 caracteres.\n"
-                                + "- Formato: 0000-0000.\n"
-                                + "Inténtelo nuevamente: " + (i + 1));
-            } else {
-                this.telefonoCliente = telefonoCliente;
-                JOptionPane.showMessageDialog(null, "Teléfono guardado satisfactoriamente.");
-                break;
+                } else if (telefonoCliente.length() != 9 || telefonoCliente.charAt(4) != '-') {
+                    JOptionPane.showMessageDialog(null,
+                            "El número de teléfono no cumple con los requisitos mínimos.\n"
+                                    + "- Mínimo 8 caracteres.\n"
+                                    + "- Formato: 0000-0000.\n"
+                                    + "Inténtelo nuevamente: " + (i + 1));
+                } else {
+                    this.telefonoCliente = telefonoCliente;
+                    JOptionPane.showMessageDialog(null, "Teléfono guardado satisfactoriamente.");
+                    break;
+                }
             }
         }
-    }
 
     //Metodo para validar el correo electronico del cliente
-    public void agregarcorreoCliente() {
-        correoCliente = JOptionPane.showInputDialog("Ingrese su correo electronico en el siguiente formato xxxx@.xxx.com");
-        for (int i = 0; i < 3; i++) {
-            if (correoCliente == null) {
-                break;
-            } else if (correoCliente.trim().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "El correo no puede estar vacio. Intento : " + (i + 1));
-            } else if (!correoCliente.contains("@")) {
-                JOptionPane.showMessageDialog(null,
-                        "El correo no cumple con los requisitos mínimos.\n"
-                                + "- Debe contener un '@'.\n"
-                                + "- Debe contener un punto '.' después del '@'.\n"
-                                + "Inténtelo nuevamente: " + (i + 1));
+    // Método para validar el correo electrónico del cliente
+        public void agregarCorreoCliente() {
+            for (int i = 0; i < 3; i++) {
+                correoCliente = JOptionPane.showInputDialog("Ingrese su correo electrónico en el siguiente formato: xxxx@.xxx.com");
+
+                if (correoCliente == null) {
+                    // AGREGAR LO DE RETORNAR AL MENU DE BANCO
+                    break; 
+                }
 
                 correoCliente = correoCliente.trim();
 
-                JOptionPane.showMessageDialog(null,
-                        "El correo no cumple con los requisitos mínimos.\n"
-                                + "- Debe contener un '@'.\n"
-                                + "- Debe contener un punto '.' después del '@'.\n"
-                                + "Inténtelo nuevamente: " + (i + 1));
-
-            } else {
-                this.correoCliente = correoCliente;
-                JOptionPane.showMessageDialog(null, "Correo guardado satisfactoriamente.");
-                break;
+                if (correoCliente.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "El correo no puede estar vacío. Intento: " + (i + 1));
+                } else if (!correoCliente.contains("@") || !correoCliente.contains(".")) {
+                    JOptionPane.showMessageDialog(null,"Correo Invalido.");
+                    //JOptionPane.
+                } else if (correoCliente.indexOf('@') > correoCliente.lastIndexOf('.')) {
+                    JOptionPane.showMessageDialog(null,"Correo Invalido.");
+                    i=1;
+                } else {
+                    this.correoCliente = correoCliente;
+                    JOptionPane.showMessageDialog(null, "Correo guardado satisfactoriamente.");
+                    break;//RETORNAR A NO SE A DONDE
+                }
             }
         }
-    }
 
     // Get para el clienteID
     public String getclienteID() {
