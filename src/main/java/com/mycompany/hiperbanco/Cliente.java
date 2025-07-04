@@ -1,6 +1,7 @@
 package com.mycompany.hiperbanco;
 
 import javax.swing.JOptionPane;
+import javax.swing.plaf.synth.SynthTextAreaUI;
 
 //Clase Cliente
 public class Cliente {
@@ -13,6 +14,11 @@ public class Cliente {
     private String usuario;
     private String clave;
     private Estado estado;
+<<<<<<< Updated upstream
+=======
+
+    
+>>>>>>> Stashed changes
 
     // Constructor
     public Cliente(String clienteID, String nombreCliente, String telefonoCliente, String correoCliente, Estado estado) {
@@ -56,6 +62,14 @@ public class Cliente {
         }
     }
 
+    //Metodo mostrar clientes
+    public void mostrarClientes() {
+        System.out.println(
+                "ID:" + clienteID +
+                        "\nNombre:" + nombreCliente +
+                        "\nTelefono: " + telefonoCliente +
+                        "\nCorreo: " + correoCliente);
+    }
     //Metodo para el telefono
     public void agregartelefonoCliente() {
         for (int i = 0; i < 3; i++) {
@@ -81,6 +95,7 @@ public class Cliente {
     }
 
     //Metodo para validar el correo electronico del cliente
+<<<<<<< Updated upstream
     public void agregarcorreoCliente() {
         correoCliente = JOptionPane.showInputDialog("Ingrese su correo electronico en el siguiente formato xxxx@.xxx.com");
         for (int i = 0; i < 3; i++) {
@@ -107,6 +122,30 @@ public class Cliente {
                 this.correoCliente = correoCliente;
                 JOptionPane.showMessageDialog(null, "Correo guardado satisfactoriamente.");
                 break;
+=======
+        public void agregarCorreoCliente() {
+            boolean repetirCorreo = true;
+            while (repetirCorreo) {
+                correoCliente = JOptionPane.showInputDialog(null, "Ingrese su correo electrónico en el siguiente formato: xxxx@.xxx.com");
+
+                if (correoCliente == null) {
+                    repetirCorreo = false;
+                }
+                correoCliente = correoCliente.trim();
+                if (correoCliente.isEmpty() || !correoCliente.contains("@") || !correoCliente.contains(".") || correoCliente.indexOf('@') > correoCliente.lastIndexOf('.')) {
+                    JOptionPane.showMessageDialog(null, "Correo Invalido!");
+                    int valorCorreo = JOptionPane.showConfirmDialog(null,"Desea agregar otro correo?");
+                    if (valorCorreo == 0){
+                        repetirCorreo = true;
+                    }else {
+                        repetirCorreo = false;
+                    }
+                } else {
+                    this.correoCliente = correoCliente;
+                    JOptionPane.showMessageDialog(null, "Correo guardado satisfactoriamente.");
+                    repetirCorreo = false;
+                }
+>>>>>>> Stashed changes
             }
         }
     }
@@ -164,7 +203,7 @@ public class Cliente {
                             "- Formato correcto: 0000-0000");
 
         } else {
-            // Si todo es válido - se asigna valor
+            //Si todo es valido  se asigna valor
             this.telefonoCliente = telefonoCliente;
             JOptionPane.showMessageDialog(null, "Teléfono actualizado correctamente.");
         }
@@ -196,6 +235,14 @@ public class Cliente {
 
     public void setEstado(Estado estado) {
         this.estado = estado;
+    }
+
+    public String getCorreoCliente() {
+        return correoCliente;
+    }
+
+    public void setCorreoCliente(String correoCliente) {
+        this.correoCliente = correoCliente;
     }
 
 }
