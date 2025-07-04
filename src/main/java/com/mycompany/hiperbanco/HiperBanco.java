@@ -25,17 +25,12 @@ public class HiperBanco {
         miCliente2.setClave("clave"+contadorUsuarios);
         contadorUsuarios++;
 
-//        miCliente.agregarClienteID();
-//        miCliente.agregarnombreCliente();
-//        miCliente.agregartelefonoCliente();
-//        miCliente.agregarcorreoCliente();
-        int opcion = Integer.parseInt(JOptionPane.showInputDialog(
-                "MENU PRINCIPAL:\n"
-                        + "1- BANCO\n"
-                        + "2- CLIENTES\n"
-                        + "3- SALIR"));
+        miCliente1.agregarClienteID();
+        miCliente1.agregarnombreCliente();
+        miCliente1.agregartelefonoCliente();
+        miCliente1.agregarCorreoCliente();
 
-        if (opcion == 2) {
+
             while (true) {
                 String usuario = JOptionPane.showInputDialog("INGRESE SU USUARIO: ");
                 Cliente clienteActual = null;
@@ -62,7 +57,7 @@ public class HiperBanco {
                     JOptionPane.showMessageDialog(null, "No hay ningún cliente con el usuario: " + usuario);
                 }
             }
-        }
+
 
     }
 }
