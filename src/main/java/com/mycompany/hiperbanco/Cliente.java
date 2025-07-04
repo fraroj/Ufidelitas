@@ -1,4 +1,5 @@
 package com.mycompany.hiperbanco;
+
 import javax.swing.JOptionPane;
 
 //Clase Cliente
@@ -9,20 +10,24 @@ public class Cliente {
     private String nombreCliente;
     private String telefonoCliente;
     private String correoCliente;
+    private String usuario;
+    private String clave;
+    private Estado estado;
 
     // Constructor
-    public Cliente(String clienteID, String nombreCliente, String telefonoCliente, String correoCliente){
+    public Cliente(String clienteID, String nombreCliente, String telefonoCliente, String correoCliente, Estado estado) {
         this.clienteID = clienteID;
         this.nombreCliente = nombreCliente;
         this.telefonoCliente = telefonoCliente;
         this.correoCliente = correoCliente;
+        this.estado = estado;
     }
 
-    // Método para agregar clienteID con máximo 3 intentos
+    //Metodo para agregar clienteID con máximo 3 intentos
     public void agregarClienteID() {
         for (int i = 0; i < 3; i++) {
             clienteID = JOptionPane.showInputDialog("Ingrese su cedula de identificacion");
-            if(clienteID == null){
+            if (clienteID == null) {
                 break;
             }
             if (clienteID.length() != 8) {
@@ -35,142 +40,164 @@ public class Cliente {
         }
     }
 
-    //Metodo para agregar el nombre completo 
-    public void agregarnombreCliente(){
-        while(true){
+    //Metodo para agregar el nombre completo
+    public void agregarnombreCliente() {
+        while (true) {
             String input = JOptionPane.showInputDialog("Ingrese su nombre completo");
-            if(input == null) {
+            if (input == null) {
                 break;
-            }
-            else if(input.trim().isEmpty()){
+            } else if (input.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "El nombre no puede estar vacío");
-            }
-            else {
+            } else {
                 this.nombreCliente = input;
                 JOptionPane.showMessageDialog(null, "Nombre guardado.");
                 break;
             }
         }
     }
-    
-    
-     //Metodo para el telefono
 
-        public void agregartelefonoCliente() {
-    for (int i = 0; i < 3; i++) {
-        telefonoCliente = JOptionPane.showInputDialog("Ingrese su número de teléfono en el siguiente formato 0000-0000");
+    //Metodo para el telefono
+    public void agregartelefonoCliente() {
+        for (int i = 0; i < 3; i++) {
+            telefonoCliente = JOptionPane.showInputDialog("Ingrese su número de teléfono en el siguiente formato 0000-0000");
 
-        if (telefonoCliente == null) {
-            break;
-        }else if (telefonoCliente.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El numero de telefono no puede estar vacío. Intento: " + (i + 1));
-            
-        } else if (telefonoCliente.length() != 9 || telefonoCliente.charAt(4) != '-') {
-            JOptionPane.showMessageDialog(null,
-                "El número de teléfono no cumple con los requisitos mínimos.\n"
-              + "- Mínimo 8 caracteres.\n"
-              + "- Formato: 0000-0000.\n"
-              + "Inténtelo nuevamente: " + (i + 1)); 
-        } else {
-            this.telefonoCliente = telefonoCliente;
-            JOptionPane.showMessageDialog(null, "Teléfono guardado satisfactoriamente.");
-            break;
+            if (telefonoCliente == null) {
+                break;
+            } else if (telefonoCliente.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "El numero de telefono no puede estar vacío. Intento: " + (i + 1));
+
+            } else if (telefonoCliente.length() != 9 || telefonoCliente.charAt(4) != '-') {
+                JOptionPane.showMessageDialog(null,
+                        "El número de teléfono no cumple con los requisitos mínimos.\n"
+                                + "- Mínimo 8 caracteres.\n"
+                                + "- Formato: 0000-0000.\n"
+                                + "Inténtelo nuevamente: " + (i + 1));
+            } else {
+                this.telefonoCliente = telefonoCliente;
+                JOptionPane.showMessageDialog(null, "Teléfono guardado satisfactoriamente.");
+                break;
+            }
         }
     }
-}
-        
-       // Método para validar el correo electrónico del cliente
-        public void agregarCorreoCliente() {
-            for (int i = 0; i < 3; i++) {
-                correoCliente = JOptionPane.showInputDialog("Ingrese su correo electrónico en el siguiente formato: xxxx@.xxx.com");
 
-                if (correoCliente == null) {
-                    // AGREGAR LO DE RETORNAR AL MENU DE BANCO
-                    break; 
-                }
+    //Metodo para validar el correo electronico del cliente
+    public void agregarcorreoCliente() {
+        correoCliente = JOptionPane.showInputDialog("Ingrese su correo electronico en el siguiente formato xxxx@.xxx.com");
+        for (int i = 0; i < 3; i++) {
+            if (correoCliente == null) {
+                break;
+            } else if (correoCliente.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "El correo no puede estar vacio. Intento : " + (i + 1));
+            } else if (!correoCliente.contains("@")) {
+                JOptionPane.showMessageDialog(null,
+                        "El correo no cumple con los requisitos mínimos.\n"
+                                + "- Debe contener un '@'.\n"
+                                + "- Debe contener un punto '.' después del '@'.\n"
+                                + "Inténtelo nuevamente: " + (i + 1));
 
                 correoCliente = correoCliente.trim();
 
-                if (correoCliente.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "El correo no puede estar vacío. Intento: " + (i + 1));
-                } else if (!correoCliente.contains("@") || !correoCliente.contains(".")) {
-                    JOptionPane.showMessageDialog(null,"Correo Invalido.");
-                    i=1;
-                } else if (correoCliente.indexOf('@') > correoCliente.lastIndexOf('.')) {
-                    JOptionPane.showMessageDialog(null,"Correo Invalido.");
-                    i=1;
-                } else {
-                    this.correoCliente = correoCliente;
-                    JOptionPane.showMessageDialog(null, "Correo guardado satisfactoriamente.");
-                    break;//RETORNAR A NO SE A DONDE
-                }
+                JOptionPane.showMessageDialog(null,
+                        "El correo no cumple con los requisitos mínimos.\n"
+                                + "- Debe contener un '@'.\n"
+                                + "- Debe contener un punto '.' después del '@'.\n"
+                                + "Inténtelo nuevamente: " + (i + 1));
+
+            } else {
+                this.correoCliente = correoCliente;
+                JOptionPane.showMessageDialog(null, "Correo guardado satisfactoriamente.");
+                break;
             }
         }
+    }
 
-
-     
-      
-        
     // Get para el clienteID
-      public String getclienteID() {
+    public String getclienteID() {
         return clienteID;
     }
-    
+
     // Setter con validación
     public void setclienteID(String clienteID) {
-       if (clienteID == null || clienteID.length() != 8) {
-        JOptionPane.showMessageDialog(null, "Error: El clienteID debe tener exactamente 8 caracteres.");
-    } else {
-        this.clienteID = clienteID;
-        JOptionPane.showMessageDialog(null, "Cédula actualizada correctamente");
-    }
+        if (clienteID == null || clienteID.length() != 8) {
+            JOptionPane.showMessageDialog(null, "Error: El clienteID debe tener exactamente 8 caracteres.");
+        } else {
+            this.clienteID = clienteID;
+            JOptionPane.showMessageDialog(null, "Cédula actualizada correctamente");
+        }
     }
 
     // Get para el nombreCliente
     public String getNombreCliente() {
         return nombreCliente;
-    }  
-    
+    }
+
     // Set para el nombreCliente
-    public void setNombreCliente(String nombreCliente){
+    public void setNombreCliente(String nombreCliente) {
         if (nombreCliente == null || nombreCliente.trim().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Nombre inválido: no puede estar vacío.");
-    } else {
-        this.nombreCliente = nombreCliente.trim();
-        JOptionPane.showMessageDialog(null, "Nombre asignado correctamente.");
-    }    
-  }
+            JOptionPane.showMessageDialog(null, "Nombre inválido: no puede estar vacío.");
+        } else {
+            this.nombreCliente = nombreCliente.trim();
+            JOptionPane.showMessageDialog(null, "Nombre asignado correctamente.");
+        }
+    }
+
+    // Get para el telefonoCliente
     public String getTelefonoCliente() {
-    return telefonoCliente;
+        return telefonoCliente;
     }
-    
+
+    // Set para el telefonoCliente
     public void setTelefonoCliente(String telefonoCliente) {
-    // Validar que no sea null
-    if (telefonoCliente == null) {
-        JOptionPane.showMessageDialog(null, "El teléfono no puede ser nulo.");
-        
-    } else if (telefonoCliente.trim().isEmpty()) {
-        // Validar que no esté vacío
-        JOptionPane.showMessageDialog(null, "El número de teléfono no puede estar vacío.");
-        
-    } else if (telefonoCliente.length() != 9 || telefonoCliente.charAt(4) != '-') {
-        // Se valida formato: debe tener 9 caracteres y un guion en posición 4
-        JOptionPane.showMessageDialog(null,
-            "El número de teléfono no cumple con los requisitos mínimos.\n" +
-            "- Mínimo 8 caracteres (más el guion son 9).\n" +
-            "- Formato correcto: 0000-0000");
-            
-    } else {
-        // Si todo es válido - se asigna valor
-        this.telefonoCliente = telefonoCliente;
-        JOptionPane.showMessageDialog(null, "Teléfono actualizado correctamente.");
+        // Validar que no sea null
+        if (telefonoCliente == null) {
+            JOptionPane.showMessageDialog(null, "El teléfono no puede ser nulo.");
+
+        } else if (telefonoCliente.trim().isEmpty()) {
+            // Validar que no esté vacío
+            JOptionPane.showMessageDialog(null, "El número de teléfono no puede estar vacío.");
+
+        } else if (telefonoCliente.length() != 9 || telefonoCliente.charAt(4) != '-') {
+            // Se valida formato: debe tener 9 caracteres y un guion en posición 4
+            JOptionPane.showMessageDialog(null,
+                    "El número de teléfono no cumple con los requisitos mínimos.\n" +
+                            "- Mínimo 8 caracteres (más el guion son 9).\n" +
+                            "- Formato correcto: 0000-0000");
+
+        } else {
+            // Si todo es válido - se asigna valor
+            this.telefonoCliente = telefonoCliente;
+            JOptionPane.showMessageDialog(null, "Teléfono actualizado correctamente.");
+        }
     }
-}
-    
-    
-    
-    
-    
+
+    // Get para el usuario
+    public String getUsuario() {
+        return usuario;
+    }
+
+    // Set para el usuario
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    // Get para la clave
+    public String getClave() {
+        return clave;
+    }
+
+    // Set para la clave
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
 }
 
 
