@@ -79,51 +79,37 @@ public class Cliente {
     }
 }
         
-        //Metodo para validar el correo electronico del cliente
-        public void agregarcorreoCliente(){
-        correoCliente = JOptionPane.showInputDialog("Ingrese su correo electronico en el siguiente formato xxxx@.xxx.com" );
-        for (int i = 0; i < 3; i++) {
-        if (correoCliente == null) {
-           break;
-        } else if (correoCliente.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El correo no puede estar vacio. Intento : " + (i + 1));
-        } else if (!correoCliente.contains("@")) {
-    JOptionPane.showMessageDialog(null,
-        "El correo no cumple con los requisitos mínimos.\n"
-      + "- Debe contener un '@'.\n"
-      + "- Debe contener un punto '.' después del '@'.\n"
-      + "Inténtelo nuevamente: " + (i + 1)); 
+       // Método para validar el correo electrónico del cliente
+        public void agregarCorreoCliente() {
+            for (int i = 0; i < 3; i++) {
+                correoCliente = JOptionPane.showInputDialog("Ingrese su correo electrónico en el siguiente formato: xxxx@.xxx.com");
 
-    } else if (!correoCliente.contains(".") || 
-               correoCliente.indexOf('@') > correoCliente.lastIndexOf('.')) {
+                if (correoCliente == null) {
+                    // AGREGAR LO DE RETORNAR AL MENU DE BANCO
+                    break; 
+                }
 
-        JOptionPane.showMessageDialog(null,
-            "El correo no cumple con los requisitos mínimos.\n"
-          + "- Debe contener un '@'.\n"
-          + "- Debe contener un punto '.' después del '@'.\n"
-          + "Inténtelo nuevamente: " + (i + 1)); 
+                correoCliente = correoCliente.trim();
 
-    } else {
-        this.correoCliente = correoCliente;
-        JOptionPane.showMessageDialog(null, "Correo guardado satisfactoriamente.");
-        break;
-    }
- }        
-        
-        
-        
-        
+                if (correoCliente.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "El correo no puede estar vacío. Intento: " + (i + 1));
+                } else if (!correoCliente.contains("@") || !correoCliente.contains(".")) {
+                    JOptionPane.showMessageDialog(null,"Correo Invalido.");
+                    i=1;
+                } else if (correoCliente.indexOf('@') > correoCliente.lastIndexOf('.')) {
+                    JOptionPane.showMessageDialog(null,"Correo Invalido.");
+                    i=1;
+                } else {
+                    this.correoCliente = correoCliente;
+                    JOptionPane.showMessageDialog(null, "Correo guardado satisfactoriamente.");
+                    break;//RETORNAR A NO SE A DONDE
+                }
+            }
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+     
+      
         
     // Get para el clienteID
       public String getclienteID() {

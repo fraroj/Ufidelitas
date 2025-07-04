@@ -14,10 +14,10 @@ public class HiperBanco {
 
         Cliente miCliente = new Cliente ("","","","");
 
-        miCliente.agregarClienteID();
-        miCliente.agregarnombreCliente();
-        miCliente.agregartelefonoCliente();
-        miCliente.agregarcorreoCliente();
+//        miCliente.agregarClienteID();
+//        miCliente.agregarnombreCliente();
+//        miCliente.agregartelefonoCliente();
+        miCliente.agregarCorreoCliente();
       
     }
     }
