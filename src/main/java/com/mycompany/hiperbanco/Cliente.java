@@ -13,6 +13,8 @@ public class Cliente {
     private String usuario;
     private String clave;
     private Estado estado;
+    private Cuenta[] cuentas = new Cuenta[5]; //Agregado por Cris Marin
+    private int numeroCuentas = 0; //Agregado por Cris Marin
     
 
     // Constructor
@@ -195,6 +197,24 @@ public class Cliente {
 
     public void setEstado(Estado estado) {
         this.estado = estado;
+    }
+    
+    public boolean agregarCuenta(Cuenta cuenta){ //Agregado por Cris Marin
+        if (numeroCuentas < 5){                  //Agregado por Cris Marin
+        cuentas[numeroCuentas]= cuenta;          //Agregado por Cris Marin
+        numeroCuentas++;                         //Agregado por Cris Marin
+        return true;                             //Agregado por Cris Marin
+                }else{                           //Agregado por Cris Marin
+        return false;                            //Agregado por Cris Marin
+        }                                        //Agregado por Cris Marin
+    }                                            //Agregado por Cris Marin
+                                                 //Agregado por Cris Marin
+    public int getCantidadCuentas(){             //Agregado por Cris Marin
+    return numeroCuentas;                        //Agregado por Cris Marin
+    }                                            //Agregado por Cris Marin
+                                                 //Agregado por Cris Marin
+    public Cuenta[] getCuentas(){                //Agregado por Cris Marin
+    return cuentas;                              //Agregado por Cris Marin
     }
 
 }
