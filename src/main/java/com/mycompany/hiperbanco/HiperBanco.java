@@ -27,17 +27,12 @@ public class HiperBanco {
         miCliente2.setClave("clave"+contadorUsuarios);
         contadorUsuarios++;
 
-//        miCliente.agregarClienteID();
-//        miCliente.agregarnombreCliente();
-//        miCliente.agregartelefonoCliente();
-//        miCliente.agregarcorreoCliente();
-        int opcion = Integer.parseInt(JOptionPane.showInputDialog(
-                "MENU PRINCIPAL:\n"
-                        + "1- BANCO\n"
-                        + "2- CLIENTES\n"
-                        + "3- SALIR"));
+        miCliente1.agregarClienteID();
+        miCliente1.agregarnombreCliente();
+        miCliente1.agregartelefonoCliente();
+        miCliente1.agregarCorreoCliente();
 
-        if (opcion == 2) {
+
             while (true) {
                 String usuario = JOptionPane.showInputDialog("INGRESE SU USUARIO: ");
                 Cliente clienteActual = null;
@@ -64,9 +59,7 @@ public class HiperBanco {
                     JOptionPane.showMessageDialog(null, "No hay ningún cliente con el usuario: " + usuario);
                 }
             }
-        }
-       
-        int opcionBanco = Integer.parseInt(JOptionPane.showInputDialog(  //Menu cuentas
+                    int opcionBanco = Integer.parseInt(JOptionPane.showInputDialog(  //Menu cuentas
             "MENÚ CUENTAS:\n"
                 + "1- Agregar nueva cuenta\n"
                 + "2- Mostrar cuentas y movimientos\n"
@@ -79,7 +72,11 @@ public class HiperBanco {
             AgregarCuenta.mostrar__cuenta(listaCuentas, contadorCuenta);
         }else{
             JOptionPane.showMessageDialog(null, "Vuelva pronto.");
-        }                                                                //Menu Cuentas                                               
+        }                                                                //Menu Cuentas     
+        }
+       
+                                          
+
 
     }
-}
+
