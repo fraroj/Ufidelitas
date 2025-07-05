@@ -14,6 +14,8 @@ public class HiperBanco {
 
     public static void main(String[] args) {
         int contadorUsuarios=40;
+        Cuenta[] listaCuentas = new Cuenta[99];  //inicialador menu cuentas
+        int contadorCuenta = 0;                  //inicialador menu cuentas
         //Instacia cliente 1
         Cliente miCliente1 = new Cliente ("207990557","Benjamin Gamboa","86231503","bgamboa@gmail.com", Estado.activo);
         miCliente1.setUsuario(miCliente1.getNombreCliente().split(" ")[0]+contadorUsuarios);
@@ -57,7 +59,24 @@ public class HiperBanco {
                     JOptionPane.showMessageDialog(null, "No hay ningún cliente con el usuario: " + usuario);
                 }
             }
+                    int opcionBanco = Integer.parseInt(JOptionPane.showInputDialog(  //Menu cuentas
+            "MENÚ CUENTAS:\n"
+                + "1- Agregar nueva cuenta\n"
+                + "2- Mostrar cuentas y movimientos\n"
+                + "3- Salir"));
+        if (opcionBanco == 1){
+            AgregarCuenta.agregar__cuenta(listaCuentas, miCliente1, miCliente2, contadorCuenta);
+            contadorCuenta++;
+        
+        }else if(opcionBanco == 2){
+            AgregarCuenta.mostrar__cuenta(listaCuentas, contadorCuenta);
+        }else{
+            JOptionPane.showMessageDialog(null, "Vuelva pronto.");
+        }                                                                //Menu Cuentas     
+        }
+       
+                                          
 
 
     }
-}
+
